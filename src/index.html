@@ -1,0 +1,32 @@
+<!-------------------------------------------------------------------------------------- !>
+#GUIA DE ESTILO HTML. 
+- Comillas dobles en atributos -> id="name"
+
+- Valores: minuscula y kebab-case -> id="valor-del-atributo"
+
+- Practicidad -> <button> mejor que <div class="button" onclick="..">
+
+- Orden de atributos:
+  · class, id, name, data-*
+  · src, for, type, href, value, [(ngModel)], #controlAngularTag, eventos
+  · title, alt, role, aria-*, pattern, min/maxlength
+  · tabindex, style, booleanAttributes (hidden, disabled, required...)
+ 
+- No aniadir ningun valor a los atributos booleanos -> hidden mejor que hidden="hidden"
+
+- Evitar elementos innecesarios -> <img src=".."> mejor que <span><img src=".."></span>
+<----------------------------------------------------------------------------------------->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>PEC1</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
+</html>

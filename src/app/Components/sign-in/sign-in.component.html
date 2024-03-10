@@ -1,0 +1,226 @@
+<div>
+  <h1>Registro - Formulario dirigido por el modelo</h1>
+
+  <form #signInForm="ngForm" (ngSubmit)="checkSignIn(signInForm)">
+    <!-- #Email -->
+    <div id="email-box">
+      <label for="email-input">Email: </label>
+
+      <input
+        id="email-input"
+        name="email"
+        type="email"
+        [(ngModel)]="user.email"
+        #userEmail="ngModel"
+        pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+        required
+      />
+
+      <div
+        class="msg--state-error"
+        id="email-msg-box"
+        [hidden]="(userEmail.valid || userEmail.pristine) && isValidForm"
+      >
+        <span id="email-required-msg" [hidden]="!userEmail.errors?.['required']"
+          >Email requerido</span
+        >
+
+        <span id="email-pattern-msg" [hidden]="!userEmail.errors?.['pattern']"
+          >Email inválido</span
+        >
+      </div>
+    </div>
+
+    <!-- #Contrasenia -->
+    <div id="password-box">
+      <label for="password-input">Contraseña: </label>
+
+      <input
+        id="password-input"
+        name="password"
+        type="password"
+        [(ngModel)]="user.password"
+        #userPassword="ngModel"
+        required
+      />
+
+      <div
+        class="msg--state-error"
+        id="password-msg-box"
+        [hidden]="(userPassword.valid || userPassword.pristine) && isValidForm"
+      >
+        <span
+          class="msg--state-error"
+          id="password-required-msg"
+          [hidden]="!userPassword.errors?.['required']"
+          >Contraseña requerida</span
+        >
+      </div>
+    </div>
+
+    <!-- #Nombre -->
+    <div id="name-box">
+      <label for="name-input">Nombre: </label>
+
+      <input
+        id="name-input"
+        name="name"
+        type="text"
+        [(ngModel)]="user.name"
+        #userName="ngModel"
+        minlength="5"
+        maxlength="25"
+        required
+      />
+
+      <div
+        class="msg--state-error"
+        id="name-msg-box"
+        [hidden]="(userName.valid || userName.pristine) && isValidForm"
+      >
+        <span id="name-required-msg" [hidden]="!userName.errors?.['required']"
+          >Nombre requerido</span
+        >
+
+        <span
+          id="name-length-msg"
+          [hidden]="!(userName.errors?.['minlength'] || userName.errors?.['maxlength'])"
+          >Debe tener entre 5 y 25 caracteres</span
+        >
+      </div>
+    </div>
+
+    <!-- #Apellido1 -->
+    <div id="surname1-box">
+      <label for="surname1-input">Primer apellido: </label>
+
+      <input
+        id="surname1-input"
+        name="surname1"
+        type="text"
+        [(ngModel)]="user.surname1"
+        #userSurname1="ngModel"
+        minlength="5"
+        maxlength="25"
+        required
+      />
+
+      <div
+        class="msg--state-error"
+        id="surname1-msg-box"
+        [hidden]="(userSurname1.valid || userSurname1.pristine) && isValidForm"
+      >
+        <span
+          id="surname1-required-msg"
+          [hidden]="!userSurname1.errors?.['required']"
+          >Primer apellido requerido</span
+        >
+
+        <span
+          id="surname1-length-msg"
+          [hidden]="!(userSurname1.errors?.['minlength'] || userSurname1.errors?.['maxlength'])"
+          >Debe tener entre 5 y 25 caracteres</span
+        >
+      </div>
+    </div>
+
+    <!-- #Apellido2 -->
+    <div id="surname2-box">
+      <label for="surname2-input">Segundo apellido: </label>
+
+      <input
+        id="surname2-input"
+        name="surname2"
+        type="text"
+        [(ngModel)]="user.surname2"
+        minlength="5"
+        maxlength="25"
+        #userSurname2="ngModel"
+      />
+
+      <div
+        class="msg--state-error"
+        id="surname2-msg-box"
+        [hidden]="(userSurname2.valid || userSurname2.pristine) && isValidForm"
+      >
+        <span
+          id="surname2-length-msg"
+          [hidden]="!(userSurname2.errors?.['minlength'] || userSurname2.errors?.['maxlength'])"
+          >Debe tener entre 5 y 25 caracteres</span
+        >
+      </div>
+    </div>
+
+    <!-- #Alias -->
+    <div id="alias-box">
+      <label for="alias-input">Alias: </label>
+
+      <input
+        id="alias-input"
+        name="alias"
+        type="text"
+        [(ngModel)]="user.alias"
+        #userAlias="ngModel"
+        minlength="5"
+        maxlength="25"
+        required
+      />
+
+      <div
+        class="msg--state-error"
+        id="alias-msg-box"
+        [hidden]="(userAlias.valid || userAlias.pristine) && isValidForm"
+      >
+        <span id="alias-required-msg" [hidden]="!userAlias.errors?.['required']"
+          >Alias requerido</span
+        >
+
+        <span
+          id="alias-length-msg"
+          [hidden]="!(userAlias.errors?.['minlength'] || userAlias.errors?.['maxlength'])"
+          >Debe tener entre 5 y 25 caracteres</span
+        >
+      </div>
+    </div>
+
+    <!-- #Fecha nacimiento -->
+    <div id="birth-date-box">
+      <label for="birth-date-input">Fecha de nacimiento: </label>
+
+      <input
+        id="birth-date-input"
+        name="birth-date"
+        type="date"
+        [(ngModel)]="user.birthDate"
+        #userBirthDate="ngModel"
+        (change)="handleFormatDate($event)"
+        pattern="^[0-9]{4}-(((0[13578]|(10|12))-(0[1-9]|[1-2][0-9]|3[0-1]))|(02-(0[1-9]|[1-2][0-9]))|((0[469]|11)-(0[1-9]|[1-2][0-9]|30)))$"
+        required
+      />
+
+      <div
+        class="msg--state-error"
+        id="birth-date-msg-box"
+        [hidden]="
+          (userBirthDate.valid || userBirthDate.pristine) && isValidForm
+        "
+      >
+        <span
+          id="birth-date-required-msg"
+          [hidden]="!userBirthDate.errors?.['required']"
+          >Fecha de nacimiento requerida</span
+        >
+        <span
+          id="birth-date-pattern-msg"
+          [hidden]="!userBirthDate.errors?.['pattern']"
+          >Fecha de nacimiento inválida</span
+        >
+      </div>
+    </div>
+
+    <!-- #Boton registro -->
+    <div id="signin-btn-box">
+      <button id="signin-btn">Registrarse</button>
+    </div>
+  </form>
+</div>

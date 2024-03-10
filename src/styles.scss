@@ -1,0 +1,58 @@
+/* You can add global styles to this file, and also import other style files */
+
+/****************************************************************************************************\
+#GUIA DE ESTILO CSS. 
+- Constantes: mayuscula y snake_case -> $GLOBAL_CONSTANT
+
+- Variables: camelCase -> $localVariable
+
+- Alcance global: contiene prefijo global (alcance local sin prefijo) -> $globalVariable
+
+- Orden de declaracion:
+  · Posicionamiento (position, top, right, bottom, left, z-index...)
+  · Modelo de caja (display, flex-direction, justify-content, align-items, width, height...)
+  · Tipografia (font, line-height, color, text-align, text-decoration...)
+  · Visual (background-color, border, border-radius...)
+  · Otros (opacity)
+
+- Recomendable las propiedades logicas: 
+  · block (arriba y abajo) -> {border-block: 1px} en lugar de {border-top: 1px; border-bottom: 1px}
+  · inline (drcha e izda) -> {margin-inline: 1px} en lugar de {margin-right: 1px; margin-left: 1px;}  
+
+- Usar <link rel="stylesheet" href="style.css"> en lugar de <style>@import url("style.css")</style>
+
+- Colocar @media junto a la regla original en lugar de hacerlo en otro archivo o al final del mismo
+
+- Regla con una unica propiedad en una linea -> .class { width: 120px; }
+
+- Evitar notacion abreviada innecesaria -> {margin-botton: 10px;} en lugar de {margin: 0 0 10px;}
+
+- Operaciones entre parentesis -> {margin: 10px 0 ($localVariable * 2) 10px;}
+
+- Nombres de clase segun OOCSS y BEM:
+  · OOCSS
+  · BEM: bloque (.block), elemento (.block__element), modificador (.element--mod-value)
+
+- Selectores:
+  · Evita especificidad -> selectores id, de etiquetas (div, span...)
+  · Mayor brevedad, evitando mas de 3 selectores (#selector1 .selector2 .selector3 {})
+  · Evita selectores de atributo en componentes frecuentes 
+\****************************************************************************************************/
+
+/*****************************************************************************************\
+#TEMA DE COLORES
+\*****************************************************************************************/
+
+$GLOBAL_ERROR_COLOR: red;
+
+/*****************************************************************************************\
+#TIPOGRAFIA
+\*****************************************************************************************/
+
+/*****************************************************************************************\
+#REGLAS GLOBALES CSS
+\*****************************************************************************************/
+
+.msg--state-error {
+  color: $GLOBAL_ERROR_COLOR;
+}

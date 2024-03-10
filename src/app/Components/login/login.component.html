@@ -1,0 +1,52 @@
+<div>
+  <h1>Inicio de sesión - Formulario dirigido por el modelo</h1>
+
+  <form #loginForm="ngForm" (ngSubmit)="checkLogin()">
+    <!-- #Email -->
+    <div id="email-box">
+      <label for="email-input">Email: </label>
+
+      <input
+        id="email-input"
+        name="email"
+        type="email"
+        [(ngModel)]="user.email"
+        #userEmail="ngModel"
+        required
+      />
+      <span
+        class="msg--state-error"
+        id="email-msg"
+        [hidden]="userEmail.valid || userEmail.pristine"
+        >Email requerido</span
+      >
+    </div>
+
+    <!-- #Contrasenia -->
+    <div id="password-box">
+      <label for="password-input">Contraseña: </label>
+
+      <input
+        id="password-input"
+        name="password"
+        type="password"
+        [(ngModel)]="user.password"
+        #userPassword="ngModel"
+        required
+      />
+      <span
+        class="msg--state-error"
+        id="password-msg"
+        [hidden]="userPassword.valid || userPassword.pristine"
+        >Contraseña requerida</span
+      >
+    </div>
+
+    <!-- #Boton inicio sesion -->
+    <div id="login-btn-box">
+      <button id="login-btn" [disabled]="!loginForm.form.valid">
+        Iniciar sesión
+      </button>
+    </div>
+  </form>
+</div>
